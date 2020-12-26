@@ -1,17 +1,90 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Weather Info
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content style="background-color:cadetblue;" [fullscreen]="true">
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Weather Info</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12">
+                <table class="table table-hover table-bordered">
+                    <tbody *ngIf="weatherData.length == 0">
+                        <tr>
+                            <td class="text-center">No Data Found</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="weatherData.length > 0">
+                        <ng-container *ngFor="let weather of weatherData">
+                            <tr>
+                                <td>Country</td>
+                                <td><b>{{weather['country']}}</b></td>
+                            </tr>
+                            <tr>
+                                <td>State</td>
+                                <td><b>{{weather['state']}}</b></td>
+                            </tr>
+                            <tr>
+                                <td>City</td>
+                                <td><b>{{weather['city']}}</b></td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <div class="text-center">
+                    weather Conditions
+                </div>
+            </ion-col>
+            <ion-col size="12">
+                <ion-list>
+                    <ion-item>
+                        <ion-label>Description: </ion-label>{{weatherData[0]['observation'][0]['description']}}
+                    </ion-item>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+                    <ion-item>
+                        <ion-label>Sky Description: </ion-label>{{weatherData[0]['observation'][0]['skyDescription']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Temperature: </ion-label>{{weatherData[0]['observation'][0]['temperature']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Temperature Desc: </ion-label>{{weatherData[0]['observation'][0]['temperatureDesc']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Comfort: </ion-label>{{weatherData[0]['observation'][0]['comfort']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>High Temperature: </ion-label>{{weatherData[0]['observation'][0]['highTemperature']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Low Temperature: </ion-label>{{weatherData[0]['observation'][0]['lowTemperature']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>Humidity: </ion-label>{{weatherData[0]['observation'][0]['humidity']}}
+                    </ion-item>
+
+                    <ion-item>
+                        <ion-label>DewPoint: </ion-label>{{weatherData[0]['observation'][0]['dewPoint']}}
+                    </ion-item>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
