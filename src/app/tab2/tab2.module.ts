@@ -16,7 +16,10 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
     CommonModule,
     FormsModule,
     ExploreContainerComponentModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDHUsYWUuWg1RWHsO5cJkKqWiLvmH8dyMc'
+    })
   ],
   providers: [
     Geolocation
