@@ -18,6 +18,7 @@ export class Tab1Page {
     this.geolocation.getCurrentPosition().then((resp) => {
       this.currentLat = resp.coords.latitude;
       this.currentLong = resp.coords.longitude;
+      this.getWeatherInfo(this.currentLat,this.currentLong);
       // resp.coords.latitude
       // resp.coords.longitude
      }).catch((error) => {
